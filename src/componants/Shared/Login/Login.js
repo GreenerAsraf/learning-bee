@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const {user} = useContext(AuthContext);
 
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -19,16 +21,16 @@ const Login = () => {
         formIsValid = true;
       }
   
-      if (!password.match(/^[a-zA-Z]{8,22}$/)) {
-        formIsValid = false;
-        setpasswordError(
-          "Only Letters and length must best min 8 Chracters and Max 22 Chracters"
-        );
-        return false;
-      } else {
-        setpasswordError("");
-        formIsValid = true;
-      }
+    //   if (!password.match(/^[a-zA-Z]{8,22}$/)) {
+    //     formIsValid = false;
+    //     setpasswordError(
+    //       "Only Letters and length must best min 8 Chracters and Max 22 Chracters"
+    //     );
+    //     return false;
+    //   } else {
+    //     setpasswordError("");
+    //     formIsValid = true;
+    //   }
   
       return formIsValid;
     };
@@ -43,6 +45,7 @@ const Login = () => {
       <div className="container">
         <div className="row d-flex justify-content-center">
           <div className="col-md-4">
+            <h1>Name: {user}</h1>
             <form id="loginform" onSubmit={loginSubmit}>
               <div className="form-group">
                 <label>Email address</label>

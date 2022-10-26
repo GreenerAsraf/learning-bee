@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Footer = () => {
     return (
         <div>
-<footer className="text-center text-white" style={{backgroundColor: '#f1f1f1'}}>
+<footer className="text-center text-white" style={{backgroundColor: 'black', color:'white'}}>
   
   <div className="container pt-4">
     {/* <!-- Section: Social media --> */}
@@ -69,7 +69,7 @@ const Footer = () => {
   </div>
   
   <div className="text-center text-dark p-3" style={{backgroundColor: 'steelblue'}}>
-    © 2020 Copyright:
+    © 2022 Copyright:
     <a className="text-dark" href="https://mdbootstrap.com/">Programming Bee</a>
   </div>
  

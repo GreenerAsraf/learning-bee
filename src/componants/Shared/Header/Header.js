@@ -31,40 +31,15 @@ const Header = () => {
 
                   
               </Nav>
-              {/* <Nav>
-                  <>
-                      {
-                          user?.uid ?
-                              <>
-                                  <span>{user?.displayName}</span>
-                                  <Button variant="light" onClick={handleLogOut}>Log out</Button>
-                              </>
-                              :
-                              <>
-                                  <Link to='/login'>Login</Link>
-                                  <Link to='/register'>Register</Link>
-                              </>
-                      }
-
-
-                  </>
-                  <Link to="/profile">
-                      {user?.photoURL ?
-                          <Image
-                              style={{ height: '30px' }}
-                              roundedCircle
-                              src={user?.photoURL}>
-                          </Image>
-                          : <FaUser></FaUser>
-                      }
-                  </Link>
-              </Nav>
+              {/* 
               <div className='d-lg-none'>
                   <LeftSideNav></LeftSideNav>
               </div> */}
           </Navbar.Collapse>
       </Container>
   </Navbar>
+
+  
 
 
 

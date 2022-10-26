@@ -1,39 +1,40 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 // import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 // import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
     const [error, setError] = useState('');
     const [accepted, setAccepted] = useState(false);
-    // const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
+    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
 
-    // const handleSubmit = event => {
-    //     event.preventDefault();
-    //     const form = event.target;
-    //     const name = form.name.value;
-    //     const photoURL = form.photoURL.value;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-    //     // console.log(name, photoURL, email, password);
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        // const name = form.name.value;
+        // const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        // console.log(name, photoURL, email, password);
 
-    //     createUser(email, password)
-    //         .then(result => {
-    //             const user = result.user;
-    //             console.log(user);
-    //             setError('');
-    //             form.reset();
-    //             handleUpdateUserProfile(name, photoURL);
-    //             handleEmailVerification();
-    //             toast.success('Please verify your email address.')
-    //         })
-    //         .catch(e => {
-    //             console.error(e);
-    //             setError(e.message);
-    //         });
-    // }
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                form.reset();
+                // handleUpdateUserProfile(name, photoURL);
+                // handleEmailVerification();
+                // toast.success('Please verify your email address.')
+            })
+            .catch(e => {
+                console.error(e);
+                setError(e.message);
+            });
+    }
 
     // const handleUpdateUserProfile = (name, photoURL) => {
     //     const profile = {
@@ -52,12 +53,12 @@ const Register = () => {
     //     .catch(error => console.error(error));
     // }
 
-    // const handleAccepted = event => {
-    //     setAccepted(event.target.checked)
-    // }
+    const handleAccepted = event => {
+        setAccepted(event.target.checked)
+    }
 
     return (
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Your Name</Form.Label>
                 <Form.Control name="name" type="text" placeholder="Your Name" />
@@ -79,7 +80,7 @@ const Register = () => {
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check
                     type="checkbox"
-                    // onClick={handleAccepted}
+                    onClick={handleAccepted}
                     label={<>Accept <Link to="/terms">Terms and conditions</Link></>} />
             </Form.Group>
             <Button variant="primary" type="submit" disabled={!accepted}>
