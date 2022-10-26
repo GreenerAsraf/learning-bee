@@ -4,6 +4,7 @@ import Courses from '../componants/Courses/Courses';
 import Main from '../componants/layout/Main/Main';
 import Blog from '../componants/pages/Blog/Blog';
 import Faq from '../componants/pages/Faq/Faq';
+import TermsAndConditions from '../componants/pages/Others/Terms&conditions/TermsAndConditions';
 import Home from '../componants/Shared/Home/Home';
 import Login from '../componants/Shared/Login/Login';
 import Register from '../componants/Shared/Register/Register';
@@ -40,6 +41,10 @@ import Register from '../componants/Shared/Register/Register';
                 path:'/faq',
                 element: <Faq></Faq>
         
+            },
+            {
+                path: '/terms',
+                element:<TermsAndConditions></TermsAndConditions>
             }
 
 
