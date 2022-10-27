@@ -8,6 +8,7 @@ import TermsAndConditions from '../componants/pages/Others/Terms&conditions/Term
 import Home from '../componants/Shared/Home/Home';
 import Login from '../componants/Shared/Login/Login';
 import Register from '../componants/Shared/Register/Register';
+import SideNav from '../componants/Shared/SIdeNav/SideNav';
 
 
         
@@ -31,8 +32,15 @@ import Register from '../componants/Shared/Register/Register';
             },
             {
                 path: '/courses',
-                element: <Courses></Courses>
+                element: <Courses></Courses>,
+                loader: ()=> fetch ('http://localhost:5000/courses')
             },
+            {
+                path: '/sidenav',
+                element: <SideNav></SideNav>,
+                loader: ()=> fetch ('http://localhost:5000/courses')
+            },
+
             {
                 path: '/blog',
                 element: <Blog></Blog>
