@@ -15,7 +15,7 @@ const Register = () => {
         event.preventDefault();
         const form = event.target;
         // const name = form.name.value;
-        // const photoURL = form.photoURL.value;
+        const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
         // console.log(name, photoURL, email, password);
@@ -36,22 +36,22 @@ const Register = () => {
             });
     }
 
-    // const handleUpdateUserProfile = (name, photoURL) => {
-    //     const profile = {
-    //         displayName: name,
-    //         photoURL: photoURL
-    //     }
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
 
-    //     updateUserProfile(profile)
-    //         .then(() => { })
-    //         .catch(error => console.error(error));
-    // }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error));
+    }
 
-    // const handleEmailVerification  = () => {
-    //     verifyEmail()
-    //     .then(() =>{})
-    //     .catch(error => console.error(error));
-    // }
+    const handleEmailVerification  = () => {
+        verifyEmail()
+        .then(() =>{})
+        .catch(error => console.error(error));
+    }
 
     const handleAccepted = event => {
         setAccepted(event.target.checked)

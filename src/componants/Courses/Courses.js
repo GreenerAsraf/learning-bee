@@ -14,10 +14,6 @@ const Courses = () => {
                       {
                 courses.map(course =><Course key = {course._id} course ={course}></Course>)
                        }
-                      
-            
-         
-                <h3>Courses {courses.length}</h3>
               
                </div>
     );
