@@ -40,7 +40,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
             },
             {
                 path: '/course/:id',
-                element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>,
+                element: <CourseDetails></CourseDetails>,
                 loader: ({params}) => fetch (`https://programming-bee-server.vercel.app/course/${params.id}`)
 
             },
