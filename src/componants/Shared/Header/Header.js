@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Image } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import { FaUser } from 'react-icons/fa';
 import logo from '../../../assests/logo.png';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+        .then(() => { })
+        .catch(error => console.error(error))
+}
     return (
       <Navbar collapseOnSelect className='mb-4' expand="lg" bg="dark" variant="dark">
       <Container>
@@ -32,11 +43,39 @@ const Header = () => {
                   
               </Nav>
               <Nav>
+                        <>
+                            {
+                                user?.uid ?
+                                    <>
+                                        <span>{user?.displayName}</span>
+                                        <Button variant="light" onClick={handleLogOut}>Log out</Button>
+                                    </>
+                                    :
+                                    <>
+                                        <Link to='/login'>Login</Link>
+                                        <Link to='/register'>Register</Link>
+                                    </>
+                            }
+
+
+                        </>
+                        <Link to="/profile">
+                            {user?.photoURL ?
+                                <Image
+                                    style={{ height: '30px' }}
+                                    roundedCircle
+                                    src={user?.photoURL}>
+                                </Image>
+                                : <FaUser></FaUser>
+                            }
+                        </Link>
+                    </Nav>
+              {/* <Nav>
              <Nav.Link href="#deets">More deets</Nav.Link>
              <Nav.Link eventKey={2} href="#memes">
                Dank memes
              </Nav.Link>
-            </Nav>
+            </Nav> */}
             
           </Navbar.Collapse>
       </Container>

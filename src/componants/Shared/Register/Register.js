@@ -14,7 +14,7 @@ const Register = () => {
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
-        // const name = form.name.value;
+        const name = form.name.value;
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
@@ -26,7 +26,7 @@ const Register = () => {
                 console.log(user);
                 setError('');
                 form.reset();
-                // handleUpdateUserProfile(name, photoURL);
+                handleUpdateUserProfile(name, photoURL);
                 // handleEmailVerification();
                 // toast.success('Please verify your email address.')
             })

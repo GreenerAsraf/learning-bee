@@ -12,12 +12,12 @@ const SideNav = () => {
         .then(data => setCourses(data));
     }, [])
    
-    console.log(courses);
+    // console.log(courses);
     return (
         <div>
-            <h3>Our current Courses{courses.length}</h3>
+            <h3>Our current Courses: {courses.length}</h3>
            {
-            courses.map(course=> <h3><button className='btn btn-dark text-light'><Link>{course.name}</Link></button></h3> )
+            courses.map(course=> <p key={course._id}><Link to={`/course/${course._id}`}>{course.name}</Link></p> )
            }
         </div>
     );

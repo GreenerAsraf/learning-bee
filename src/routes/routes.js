@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from "react-router-dom";
+import CourseDetails from '../componants/CourseDetails/CourseDetails';
 import Courses from '../componants/Courses/Courses';
 import Main from '../componants/layout/Main/Main';
 import Blog from '../componants/pages/Blog/Blog';
@@ -9,6 +10,7 @@ import Home from '../componants/Shared/Home/Home';
 import Login from '../componants/Shared/Login/Login';
 import Register from '../componants/Shared/Register/Register';
 import SideNav from '../componants/Shared/SIdeNav/SideNav';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 
         
@@ -36,6 +38,12 @@ import SideNav from '../componants/Shared/SIdeNav/SideNav';
                 loader: ()=> fetch ('http://localhost:5000/courses')
             },
             {
+                path: '/course/:id',
+                element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>,
+                loader: ({params}) => fetch (`http://localhost:5000/course/${params.id}`)
+
+            },
+            {
                 path: '/sidenav',
                 element: <SideNav></SideNav>,
                 loader: ()=> fetch ('http://localhost:5000/courses')
@@ -43,7 +51,7 @@ import SideNav from '../componants/Shared/SIdeNav/SideNav';
 
             {
                 path: '/blog',
-                element: <Blog></Blog>
+                element: <PrivateRoute><Blog></Blog></PrivateRoute>
             },
             {
                 path:'/faq',
