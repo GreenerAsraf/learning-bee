@@ -1,14 +1,18 @@
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import toast from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import app from '../../../firebase/firebase.config';
 import useTitle from '../../../Hooks/useTitle';
 // import useTitle from '../../../hooks/useTitle';
 
 
 const Login = () => {
+    const auth = getAuth(app);
+
     const [error, setError] = useState('');
     const { signIn, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -44,7 +48,24 @@ const Login = () => {
             })
     }
 
+
+    const provider = new GoogleAuthProvider();
+
+    const handleGoogleSignin = () =>{
+        signInWithPopup(auth,provider)
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+
+        }).catch(error =>{
+            console.error(error.messeage)
+        })
+
+    }
+    
+
     return (
+        <>
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
@@ -60,10 +81,16 @@ const Login = () => {
             <Button variant="primary" type="submit">
                 Login
             </Button>
+           
             <Form.Text className="text-danger">
                 {error}
             </Form.Text>
         </Form>
+        <Button onClick={handleGoogleSignin} variant="primary" type="submit">
+                Google Login
+            </Button>
+        
+        </>
     );
 };
 

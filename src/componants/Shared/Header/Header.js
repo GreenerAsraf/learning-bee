@@ -12,6 +12,7 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  console.log(user);
 
   const handleLogOut = () => {
     logOut()
@@ -28,7 +29,7 @@ const Header = () => {
               height="30"
               className="d-inline-block align-top"
             />
-          <Navbar.Brand><Link to='/'>Programming Bee</Link></Navbar.Brand>
+          <Navbar.Brand><Link to='/'>Learning Bee</Link></Navbar.Brand>
           
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -49,20 +50,22 @@ const Header = () => {
                                     </>
                                     :
                                     <>
-                                        <Link to='/login'>Login</Link>
-                                        <Link to='/register'>Register</Link>
-                                    </>
+                                        <Nav.Link><Link to='/login'>Login</Link></Nav.Link>
+                                        <Nav.Link><Link to='/register'>Register</Link></Nav.Link>                                   </>
                             }
 
 
                         </>
                         <Link to="/profile">
                             {user?.photoURL ?
-                                <Image
+                                <>
+                                    <Image
                                     style={{ height: '30px' }}
                                     roundedCircle
                                     src={user?.photoURL}>
                                 </Image>
+                               <span> user?.displayName</span>
+                                </>
                                 : <FaUser></FaUser>
                             }
                         </Link>

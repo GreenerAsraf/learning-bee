@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
+// import { Toast } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 // import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
@@ -18,7 +19,7 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        // console.log(name, photoURL, email, password);
+        console.log(name, photoURL, email, password);
 
         createUser(email, password)
             .then(result => {
@@ -27,8 +28,8 @@ const Register = () => {
                 setError('');
                 form.reset();
                 handleUpdateUserProfile(name, photoURL);
-                // handleEmailVerification();
-                // toast.success('Please verify your email address.')
+                handleEmailVerification();
+                toast.success('Please verify your email address.')
             })
             .catch(e => {
                 console.error(e);

@@ -6,6 +6,7 @@ import Main from '../componants/layout/Main/Main';
 import Blog from '../componants/pages/Blog/Blog';
 import Faq from '../componants/pages/Faq/Faq';
 import TermsAndConditions from '../componants/pages/Others/Terms&conditions/TermsAndConditions';
+import Profile from '../componants/pages/Profile/Profile';
 import Home from '../componants/Shared/Home/Home';
 import Login from '../componants/Shared/Login/Login';
 import Register from '../componants/Shared/Register/Register';
@@ -35,23 +36,27 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
             {
                 path: '/courses',
                 element: <Courses></Courses>,
-                loader: ()=> fetch ('http://localhost:5000/courses')
+                loader: ()=> fetch ('https://programming-bee-server.vercel.app/courses')
             },
             {
                 path: '/course/:id',
                 element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>,
-                loader: ({params}) => fetch (`http://localhost:5000/course/${params.id}`)
+                loader: ({params}) => fetch (`https://programming-bee-server.vercel.app/course/${params.id}`)
 
             },
             {
                 path: '/sidenav',
                 element: <SideNav></SideNav>,
-                loader: ()=> fetch ('http://localhost:5000/courses')
+                loader: ()=> fetch ('https://programming-bee-server.vercel.app/courses')
             },
 
             {
                 path: '/blog',
                 element: <PrivateRoute><Blog></Blog></PrivateRoute>
+            },
+            {
+                path: '/profile',
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>
             },
             {
                 path:'/faq',
@@ -61,7 +66,8 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
             {
                 path: '/terms',
                 element:<TermsAndConditions></TermsAndConditions>
-            }
+            },
+            
 
 
 
@@ -80,10 +86,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
             //     path: '/terms',
             //     element: <TermsAndConditions></TermsAndConditions>
             // },
-            // {
-            //     path: '/profile',
-            //     element: <PrivateRoute><Profile></Profile></PrivateRoute>
-            // }
+            
         ]
     }
 ])
