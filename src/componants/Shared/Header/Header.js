@@ -64,72 +64,17 @@ const Header = () => {
                                     roundedCircle
                                     src={user?.photoURL}>
                                 </Image> 
-                               <span> user?.displayName</span>
+                               <span>{ user?.displayName}</span>
                                 </>
                                 : <FaUser></FaUser>
                             }
                         </Link>
                     </Nav>
-              {/* <Nav>
-             <Nav.Link href="#deets">More deets</Nav.Link>
-             <Nav.Link eventKey={2} href="#memes">
-               Dank memes
-             </Nav.Link>
-            </Nav> */}
+             
             
           </Navbar.Collapse>
       </Container>
   </Navbar>
-
-  
-
-
-
-    //     <div>
-    //     <Navbar bg="dark" variant="dark">
-    //     <Container>
-    //     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        
-    //       <Navbar.Brand href="#home">
-    //         <img
-    //           alt=""
-    //           src={logo}
-    //           width="30"
-    //           height="30"
-    //           className="d-inline-block align-top"
-    //         />{' '}
-    //         Programming Bee
-    //       </Navbar.Brand>
-    //       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-    //     {/* .................................................
-    //     copy 
-    //     ................................................. */}
-
-
-      
-        
-       
-
-    //     <Navbar.Collapse id="responsive-navbar-nav">
-    //       <Nav className="me-auto">
-    //         <Nav.Link href="#features">Courses</Nav.Link>
-    //         <Nav.Link href="#pricing">Blog</Nav.Link>
-    //         <Nav.Link href="#pricing">FAQ</Nav.Link>
-            
-    //       </Nav>
-    //       <Nav>
-    //         <Nav.Link href="#deets">More deets</Nav.Link>
-    //         <Nav.Link eventKey={2} href="#memes">
-    //           Dank memes
-    //         </Nav.Link>
-    //       </Nav>
-    //     </Navbar.Collapse>
-     
-    // </Navbar>
-
-    //     </Container>
-    //   </Navbar>
-    //     </div>
     );
 };
 

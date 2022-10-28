@@ -1,4 +1,4 @@
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -12,7 +12,7 @@ import useTitle from '../../../Hooks/useTitle';
 
 const Login = () => {
     const auth = getAuth(app);
-
+    const [user, setUser] = useState({})
     const [error, setError] = useState('');
     const { signIn, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -49,10 +49,11 @@ const Login = () => {
     }
 
 
-    const provider = new GoogleAuthProvider();
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleGoogleSignin = () =>{
-        signInWithPopup(auth,provider)
+        signInWithPopup(auth,googleProvider)
         .then(result=>{
             const user = result.user;
             console.log(user);
@@ -62,6 +63,17 @@ const Login = () => {
         })
 
     }
+    const handleGithubSignIn= () =>{
+        signInWithPopup(auth, githubProvider)
+        .then( result => {
+          const user = result.user;
+          setUser(user);
+          console.log(user);
+        })
+        .catch( error =>{
+          console.error ('error: ', error)
+        })
+      }
     
 
     return (
@@ -86,8 +98,14 @@ const Login = () => {
                 {error}
             </Form.Text>
         </Form>
+        <br />
         <Button onClick={handleGoogleSignin} variant="primary" type="submit">
                 Google Login
+            </Button>
+            <br />
+            <br />
+        <Button onClick={handleGithubSignIn} variant="primary" type="submit">
+                Github Login
             </Button>
         
         </>

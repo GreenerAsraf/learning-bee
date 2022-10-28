@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CardGroup from 'react-bootstrap/CardGroup';
+import { Link } from 'react-router-dom';
 
 
 const Course = ({course}) => {
@@ -19,7 +20,7 @@ const Course = ({course}) => {
             to additional content. This content is a little bit longer.
           </Card.Text>
         </Card.Body>
-        <Button  variant="primary">Click </Button>
+        <Button  variant="dark"><Link to={`/course/${course._id}`}>Click </Link></Button>
       </Card>
       
     

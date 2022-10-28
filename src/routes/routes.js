@@ -7,6 +7,7 @@ import Blog from '../componants/pages/Blog/Blog';
 import Faq from '../componants/pages/Faq/Faq';
 import TermsAndConditions from '../componants/pages/Others/Terms&conditions/TermsAndConditions';
 import Profile from '../componants/pages/Profile/Profile';
+import PremiumCourse from '../componants/PremiumCourse/PremiumCourse';
 import Home from '../componants/Shared/Home/Home';
 import Login from '../componants/Shared/Login/Login';
 import Register from '../componants/Shared/Register/Register';
@@ -39,6 +40,10 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
                 loader: ()=> fetch ('https://programming-bee-server.vercel.app/courses')
             },
             {
+                path: 'premium',
+                element: <PrivateRoute><PremiumCourse></PremiumCourse></PrivateRoute>
+            },
+            {
                 path: '/course/:id',
                 element: <CourseDetails></CourseDetails>,
                 loader: ({params}) => fetch (`https://programming-bee-server.vercel.app/course/${params.id}`)
@@ -52,7 +57,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 
             {
                 path: '/blog',
-                element: <PrivateRoute><Blog></Blog></PrivateRoute>
+                element: <Blog></Blog>
             },
             {
                 path: '/profile',
