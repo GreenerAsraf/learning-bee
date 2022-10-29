@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import './Header.css';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -14,7 +15,14 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   console.log(user);
 
+  const toogleDarkMode = ()=> {
+    const element = document.body;
+    element.classList.toggle("dark-mode");
+}
+
+
   const handleLogOut = () => {
+   
     logOut()
         .then(() => { })
         .catch(error => console.error(error))
@@ -41,6 +49,7 @@ const Header = () => {
                   
               </Nav>
               <Nav>
+                    <Button onClick={toogleDarkMode} className='text-warning'>Dark Mode</Button>
                         <>
                             {
                                 user?.uid ?
@@ -64,7 +73,7 @@ const Header = () => {
                                     roundedCircle
                                     src={user?.photoURL}>
                                 </Image> 
-                               <span>{ user?.displayName}</span>
+                               <span className ='' data-toggle="tooltip" data-placement="bottom" title={ user?.displayName}>{ user?.displayName}</span>
                                 </>
                                 : <FaUser></FaUser>
                             }

@@ -99,14 +99,19 @@ const Login = () => {
             </Form.Text>
         </Form>
         <br />
+        <small>If you want to log in using your Google Account</small> <br />
         <Button onClick={handleGoogleSignin} variant="primary" type="submit">
                 Google Login
             </Button>
             <br />
             <br />
+            <small>If you want to log in using your Github Account</small>
+            <br />
         <Button onClick={handleGithubSignIn} variant="primary" type="submit">
                 Github Login
             </Button>
+
+            
         
         </>
     );

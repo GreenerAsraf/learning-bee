@@ -20,7 +20,7 @@ const Course = ({course}) => {
             to additional content. This content is a little bit longer.
           </Card.Text>
         </Card.Body>
-        <Button  variant="dark"><Link to={`/course/${course._id}`}>Click </Link></Button>
+        <Button  variant="dark"><Link to={`/course/${course._id}`}>Join {course.name} Course </Link></Button>
       </Card>
       
     

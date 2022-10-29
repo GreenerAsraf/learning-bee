@@ -3,15 +3,19 @@ import { Carousel } from 'react-bootstrap';
 import image from '../../../assests/education-cover.jpg';
 import image1 from '../../../assests/education-2.jpg';
 import image2 from '../../../assests/medium-shot-girl-reading-book.jpg';
+import Course from '../../Course/Course';
+import Courses from '../../Courses/Courses';
+import { useLoaderData } from 'react-router-dom';
 
 
 const Home = () => {
+
     return (
         <div>
     <Carousel>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="d-block w-100 h-75"
           src={image1}
           alt="First slide"
         />
@@ -38,7 +42,7 @@ const Home = () => {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100 bg-opacity-75"
+          className="d-block w-100 "
           src={image2}
           alt="Third slide"
         />
@@ -53,6 +57,8 @@ const Home = () => {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+
+    
            
         </div>
     );

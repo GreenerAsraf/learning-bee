@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import CourseDetails from '../componants/CourseDetails/CourseDetails';
 import Courses from '../componants/Courses/Courses';
 import Main from '../componants/layout/Main/Main';
+import NotFound from '../componants/NotFound/NotFound';
 import Blog from '../componants/pages/Blog/Blog';
 import Faq from '../componants/pages/Faq/Faq';
 import TermsAndConditions from '../componants/pages/Others/Terms&conditions/TermsAndConditions';
@@ -72,7 +73,10 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
                 path: '/terms',
                 element:<TermsAndConditions></TermsAndConditions>
             },
-            
+            {
+                path: '*',
+                element: <NotFound></NotFound>
+            }
 
 
 
