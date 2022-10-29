@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Header.css';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
@@ -12,13 +12,25 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const [buttonText, setButtonText] = useState('Dark Mode');
+
   const { user, logOut } = useContext(AuthContext);
   console.log(user);
-
+  const button = "Dark Mode";
   const toogleDarkMode = ()=> {
-    const element = document.body;
-    element.classList.toggle("dark-mode");
+    const button = document.getElementById("btn-toggle");
+    if (button.innerHTML === "Dark Mode") {
+        button.innerHTML = "Light Mode";
+        return button
+      } else {
+        button.innerHTML = "Dark Mode";
+      }return button
+    // const element = document.body;
+    // element.classList.toggle("dark-mode");
+    // setButtonText('Light Mode');
+    
 }
+
 
 
   const handleLogOut = () => {
@@ -49,7 +61,7 @@ const Header = () => {
                   
               </Nav>
               <Nav>
-                    <Button onClick={toogleDarkMode} className='text-warning'>Dark Mode</Button>
+                    <Button onClick={toogleDarkMode} id='btn-toggle' className='text-warning'>{button}</Button>
                         <>
                             {
                                 user?.uid ?
