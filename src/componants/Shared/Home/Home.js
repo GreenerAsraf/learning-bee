@@ -12,6 +12,12 @@ const Home = () => {
 
     return (
         <div>
+          <section className ='Text-center'>
+            <h2 >Welcome to <br/> <span className="fs-1 text-primary">Learning Bee</span></h2>
+            <h3> <span className='text-secondary'>Learn Anything, Anytime, Anywhere</span> <br />
+            <span className='text-warning'> And Accelerate Future</span> </h3>
+          </section>
+
     <Carousel>
       <Carousel.Item>
         <img
